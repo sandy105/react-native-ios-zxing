@@ -45,9 +45,9 @@
 
 ## Usage
 ```javascript
-import RNIosZxing from 'react-native-ios-zxing';
+import { RNZxingScan } from "react-native-ios-zxing";
 
-// TODO: What to do with the module?
-RNIosZxing;
+ <View style={{flex: 1}}>
+          <RNZxingScan onBarCodeRead = {(data) => {Alert.alert(data.format,data.content)}} />
+</View>
 ```
-  
