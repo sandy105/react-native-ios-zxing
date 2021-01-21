@@ -2,8 +2,8 @@
 # react-native-ios-zxing
 
 ## Getting started
-
-`$ npm install react-native-ios-zxing --save`
+  
+ <!-- `$ npm install react-native-ios-zxing --save`-->
 
 ### Mostly automatic installation
 
