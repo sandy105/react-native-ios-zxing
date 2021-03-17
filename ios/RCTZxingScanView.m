@@ -24,10 +24,16 @@
 @synthesize onBarCodeRead = _onBarCodeRead;
 
 
-- (void)layoutSubviews
-{
-    RCTLog(@"In layoutSubviews");
-    [super layoutSubviews];
+- (instancetype)initWithFrame:(CGRect)frame{
+    RCTLog(@" initWithFrame");
+    if (self =[super initWithFrame:frame]) {
+        [self setUp];
+    }
+    return self;
+}
+// 初始化
+- (void)setUp{
+    RCTLog(@" setUp");
     capture = [[ZXCapture alloc] init];
     capture.sessionPreset = AVCaptureSessionPreset1920x1080;
     capture.camera = capture.back;
@@ -36,20 +42,31 @@
 
     scanning = NO;
     self.backgroundColor = [UIColor blackColor];
+    [self.layer addSublayer:capture.layer];
+
+    scanRectView = [[UIView alloc] init];
+    scanRectView.backgroundColor = [UIColor blackColor];
+    scanRectView.alpha = 0;
+
+    [self addSubview :scanRectView];
+}
+
+
+- (void)layoutSubviews
+{
+    RCTLog(@"In layoutSubviews");
+    [super layoutSubviews];
+    scanning = NO;
     CGSize screenSize = RCTScreenSize();
     self.frame =CGRectMake(0, 0, screenSize.width, screenSize.height);
     capture.layer.frame =  CGRectMake(0, 0, screenSize.width, screenSize.height);
-    [self.layer addSublayer:capture.layer];
-//     reset the size
-    int width = screenSize.width* 0.9;
-    int height =screenSize.height*0.35;
-    
-    CGRect rect = CGRectMake(screenSize.width/2- width/2,screenSize.height/2 -height/2,width,height);
-    scanRectView = [[UIView alloc] initWithFrame:rect];
-    scanRectView.backgroundColor = [UIColor blackColor];
-    scanRectView.alpha = 0;
-    
-    [self addSubview :scanRectView];
+
+
+    //     reset the size
+   int width = screenSize.width* 0.9;
+   int height =screenSize.height*0.35;
+   scanRectView.frame = CGRectMake(screenSize.width/2- width/2,screenSize.height/2 -height/2,width,height);
+
     [self applyOrientation];
     RCTLog(@"In layoutSubviews---end");
 }
@@ -70,7 +87,7 @@
   UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
   float scanRectRotation;
   float captureRotation;
-  
+
   switch (orientation) {
     case UIInterfaceOrientationPortrait:
       captureRotation = 0;
@@ -97,7 +114,7 @@
   CGAffineTransform transform = CGAffineTransformMakeRotation((CGFloat) (captureRotation / 180 * M_PI));
   [capture setTransform:transform];
   [capture setRotation:scanRectRotation];
-  
+
   [self applyRectOfInterest:orientation];
 }
 
@@ -115,7 +132,7 @@
   if(UIInterfaceOrientationIsPortrait(orientation)) {
     scaleVideoX = capture.layer.frame.size.width / videoSizeX;
     scaleVideoY = capture.layer.frame.size.height / videoSizeY;
-    
+
     // Convert CGPoint under portrait mode to map with orientation of image
     // because the image will be cropped before rotate
     // reference: https://github.com/TheLevelUp/ZXingObjC/issues/222
@@ -124,12 +141,12 @@
     CGFloat realWidth = transformedVideoRect.size.height;
     CGFloat realHeight = transformedVideoRect.size.width;
     transformedVideoRect = CGRectMake(realX, realY, realWidth, realHeight);
-    
+
   } else {
     scaleVideoX = capture.layer.frame.size.width / videoSizeY;
     scaleVideoY = capture.layer.frame.size.height / videoSizeX;
   }
-  
+
   _captureSizeTransform = CGAffineTransformMakeScale(1.0/scaleVideoX, 1.0/scaleVideoY);
   capture.scanRect = CGRectApplyAffineTransform(transformedVideoRect, _captureSizeTransform);
 }
@@ -140,52 +157,52 @@
   switch (format) {
     case kBarcodeFormatAztec:
       return @"Aztec";
-      
+
     case kBarcodeFormatCodabar:
       return @"CODABAR";
-      
+
     case kBarcodeFormatCode39:
       return @"Code 39";
-      
+
     case kBarcodeFormatCode93:
       return @"Code 93";
-      
+
     case kBarcodeFormatCode128:
       return @"Code 128";
-      
+
     case kBarcodeFormatDataMatrix:
       return @"Data Matrix";
-      
+
     case kBarcodeFormatEan8:
       return @"EAN-8";
-      
+
     case kBarcodeFormatEan13:
       return @"EAN-13";
-      
+
     case kBarcodeFormatITF:
       return @"ITF";
-      
+
     case kBarcodeFormatPDF417:
       return @"PDF417";
-      
+
     case kBarcodeFormatQRCode:
       return @"QR Code";
-      
+
     case kBarcodeFormatRSS14:
       return @"RSS 14";
-      
+
     case kBarcodeFormatRSSExpanded:
       return @"RSS Expanded";
-      
+
     case kBarcodeFormatUPCA:
       return @"UPCA";
-      
+
     case kBarcodeFormatUPCE:
       return @"UPCE";
-      
+
     case kBarcodeFormatUPCEANExtension:
       return @"UPC/EAN extension";
-      
+
     default:
       return @"Unknown";
   }
@@ -202,11 +219,11 @@
     RCTLog(@"captureResult");
   if (!scanning) return;
   if (!result) return;
-  
+
   // We got a result.
   [capture stop];
   scanning = NO;
-  
+
   // Display found barcode location
   CGAffineTransform inverse = CGAffineTransformInvert(_captureSizeTransform);
   NSMutableArray *points = [[NSMutableArray alloc] init];
@@ -219,7 +236,7 @@
     location = [NSString stringWithFormat:@"%@ (%f, %f)", location, transformedPoint.x, transformedPoint.y];
     [points addObject:windowPointValue];
   }
-  
+
   // Display information about the result onscreen.
   NSString *formatString = [self barcodeFormatToString:result.barcodeFormat];
   NSString *display = [NSString stringWithFormat:@"{Format: %@,Contents:%@}",
@@ -234,7 +251,7 @@
     }
 //  // Vibrate
 //  AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
-  
+
   dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 2 * NSEC_PER_SEC), dispatch_get_main_queue(), ^{
     scanning = YES;
     [capture start];
