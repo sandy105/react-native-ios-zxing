@@ -217,7 +217,7 @@
 
 - (void)captureResult:(ZXCapture *)capture result:(ZXResult *)result {
     RCTLog(@"captureResult");
-  if (!scanning) return;
+  // if (!scanning) return;
   if (!result) return;
 
   // We got a result.
