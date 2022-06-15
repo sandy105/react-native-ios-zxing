@@ -1,7 +1,7 @@
 {
   "name": "react-native-ios-zxing",
   "version": "1.0.0",
-  "description": "",
+  "description": "Zxing from framework for react-native",
   "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,11 +9,12 @@
   "keywords": [
     "react-native"
   ],
-  "author": "",
-  "license": "",
+  "author": "Sandy105",
+  "license": "MIT",
   "peerDependencies": {
     "react-native": "^0.41.2",
     "react-native-windows": "0.41.0-rc.1"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "homepage": "https://github.com/sandy105/react-native-ios-zxing#readme"
 }
