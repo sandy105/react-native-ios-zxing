@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		46B21908EAD16B16C56E5C33 /* Pods_RNIosZxing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B2F9977E8AD7C6D1C4D39A5 /* Pods_RNIosZxing.framework */; };
 		669D6B6A25B6E6BF00F7B2EF /* RCTZxingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 669D6B6925B6E6BF00F7B2EF /* RCTZxingManager.m */; };
 		669D6B7325B6F3F000F7B2EF /* RCTZxingScanView.m in Sources */ = {isa = PBXBuildFile; fileRef = 669D6B7225B6F3F000F7B2EF /* RCTZxingScanView.m */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,8 @@
 
 /* Begin PBXFileReference section */
 		134814201AA4EA6300B7C361 /* libRNIosZxing.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRNIosZxing.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		2B2F9977E8AD7C6D1C4D39A5 /* Pods_RNIosZxing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RNIosZxing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		524693BBE97F0DC42B9415CD /* Pods-RNIosZxing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNIosZxing.debug.xcconfig"; path = "Target Support Files/Pods-RNIosZxing/Pods-RNIosZxing.debug.xcconfig"; sourceTree = "<group>"; };
 		669AAAFF25B6667A009352DD /* ZXMultiFormatReader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXMultiFormatReader.h; sourceTree = "<group>"; };
 		669AAB0125B6667A009352DD /* ZXPlanarYUVLuminanceSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZXPlanarYUVLuminanceSource.m; sourceTree = "<group>"; };
 		669AAB0225B6667A009352DD /* ZXResult.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZXResult.h; sourceTree = "<group>"; };
@@ -669,6 +672,7 @@
 		669D6B6925B6E6BF00F7B2EF /* RCTZxingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTZxingManager.m; sourceTree = "<group>"; };
 		669D6B7125B6F3D800F7B2EF /* RCTZxingScanView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RCTZxingScanView.h; sourceTree = "<group>"; };
 		669D6B7225B6F3F000F7B2EF /* RCTZxingScanView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RCTZxingScanView.m; sourceTree = "<group>"; };
+		FA2488FD67EAF71248F19C48 /* Pods-RNIosZxing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RNIosZxing.release.xcconfig"; path = "Target Support Files/Pods-RNIosZxing/Pods-RNIosZxing.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -676,6 +680,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				46B21908EAD16B16C56E5C33 /* Pods_RNIosZxing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -699,6 +704,8 @@
 				669D6B6925B6E6BF00F7B2EF /* RCTZxingManager.m */,
 				669AAAFE25B6667A009352DD /* ZXingObjC */,
 				134814211AA4EA7D00B7C361 /* Products */,
+				EEBD902571DC35A7D8446428 /* Pods */,
+				A154017BB281ECF12F5095D3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1621,6 +1628,23 @@
 			path = result;
 			sourceTree = "<group>";
 		};
+		A154017BB281ECF12F5095D3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2B2F9977E8AD7C6D1C4D39A5 /* Pods_RNIosZxing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EEBD902571DC35A7D8446428 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				524693BBE97F0DC42B9415CD /* Pods-RNIosZxing.debug.xcconfig */,
+				FA2488FD67EAF71248F19C48 /* Pods-RNIosZxing.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1628,6 +1652,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 58B511EF1A9E6C8500147676 /* Build configuration list for PBXNativeTarget "RNIosZxing" */;
 			buildPhases = (
+				9E370B108F86A376EA761BA7 /* [CP] Check Pods Manifest.lock */,
 				58B511D71A9E6C8500147676 /* Sources */,
 				58B511D81A9E6C8500147676 /* Frameworks */,
 				58B511D91A9E6C8500147676 /* CopyFiles */,
@@ -1672,6 +1697,31 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9E370B108F86A376EA761BA7 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RNIosZxing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		58B511D71A9E6C8500147676 /* Sources */ = {
@@ -1771,6 +1821,7 @@
 		};
 		58B511F01A9E6C8500147676 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 524693BBE97F0DC42B9415CD /* Pods-RNIosZxing.debug.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1779,7 +1830,7 @@
 					"$(SRCROOT)/../../react-native/React/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = RNIosZxing;
 				SKIP_INSTALL = YES;
 			};
@@ -1787,6 +1838,7 @@
 		};
 		58B511F11A9E6C8500147676 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FA2488FD67EAF71248F19C48 /* Pods-RNIosZxing.release.xcconfig */;
 			buildSettings = {
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1795,7 +1847,7 @@
 					"$(SRCROOT)/../../react-native/React/**",
 				);
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = "$(inherited)";
 				PRODUCT_NAME = RNIosZxing;
 				SKIP_INSTALL = YES;
 			};
